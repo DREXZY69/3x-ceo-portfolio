@@ -102,6 +102,51 @@ footer{border-top:1px solid var(--line);padding:17px 0 25px;color:#536c7d;font-s
  .contact{display:block}.contact a{display:inline-block;margin-top:20px}
  footer{display:block}.footerRight{margin-top:6px}
 }
+
+.contactLinks{display:flex;gap:9px;margin-top:22px;flex-wrap:wrap}
+.contactLinks>a,.contactLinks>div{display:flex;align-items:center;gap:9px;border:1px solid #1b3040;background:#09131c;border-radius:4px;padding:9px 12px;color:#b5c9d6;font-size:11px;font-weight:700}
+.contactLinks>a:hover{border-color:#2d6f96;color:#edf7ff}
+.contactLinks span,.discordMark{width:18px;height:18px;display:grid;place-items:center;color:#edf7ff;background:#162b3a;border-radius:3px;font-size:10px;font-weight:900}
+.contactLinks b{color:#5fb8e9;margin-left:4px}
+.contactLinks small{color:#5f788a;font-weight:500;margin-left:2px}
+.contactButton{background:#278ac6;border-radius:4px;padding:12px 18px;font-size:11px;font-weight:900}
+.contactButton:hover{background:#55b7ef}
+
+/* Light-to-dark editorial background */
+html,body{min-height:100%;background:#fff}
+body{
+  background:
+    linear-gradient(180deg,#ffffff 0%,#f1f1f1 22%,#d5d5d5 45%,#8f8f8f 68%,#202326 100%) fixed;
+  color:#101820;
+}
+header{border-bottom:1px solid #b9bec2}
+.brand strong{color:#11181e}
+.brand small{color:#267fae}
+nav{color:#46545e}
+nav a:hover,nav a.active{color:#101820}
+.hero{color:#101820}
+.hero:after{background:radial-gradient(circle,#4b9dcc26 0%,transparent 67%)}
+.heroText{color:#46545e}
+.secondary{color:#435662}
+.projects{border-top:1px solid #aeb4b8}
+.sectionTop h2{color:#18242c}
+.sectionTop p{color:#5b6972}
+.stats{border-top:1px solid #aeb4b8;border-bottom:1px solid #aeb4b8}
+.stat{border-right-color:#aeb4b8}
+.stat b{color:#15212a}
+.stat small{color:#536670}
+.bottom{border-bottom:1px solid #52585c}
+.bottom h2{color:#f3f7fa}
+.bottom p{color:#c1cbd1}
+.service{border-top-color:#59636a}
+.service:last-child{border-bottom-color:#59636a}
+.service strong{color:#eef4f8}
+.service span{color:#aab8c1}
+.contact{color:#f3f7fa}
+.contact p{color:#bdc8ce}
+footer{border-top-color:#4e585f;color:#bdc7cd}
+.contactLinks>a,.contactLinks>div{background:#111c24;border-color:#314957;color:#d7e5ec}
+.contactLinks>a:hover{border-color:#4f9bc6;color:#fff}
 </style>
 </head>
 <body>
@@ -167,8 +212,16 @@ footer{border-top:1px solid var(--line);padding:17px 0 25px;color:#536c7d;font-s
 </section>
 
 <section class="contact" id="contact">
-  <div><div class="kicker">CONTACT</div><h2>Have a game idea?</h2><p>Let's turn it into something players want to play.</p></div>
-  <a href="https://www.roblox.com/users/profile?username=3x_ceo" target="_blank">CONTACT ME →</a>
+  <div>
+    <div class="kicker">CONTACT</div>
+    <h2>Have a game idea?</h2>
+    <p>Let's turn it into something players want to play.</p>
+    <div class="contactLinks">
+      <a href="https://x.com/3_xce_" target="_blank" rel="noopener"><span>X</span> @3_xce_ <b>↗</b></a>
+      <div><span class="discordMark">D</span> 3x_ceo <small>Discord</small></div>
+    </div>
+  </div>
+  <a class="contactButton" href="https://www.roblox.com/users/profile?username=3x_ceo" target="_blank">CONTACT ME →</a>
 </section>
 
 <footer><span>© 2026 3x_ceo · Roblox Developer</span><span class="footerRight">Peak CCU 300 · Available for work</span></footer>

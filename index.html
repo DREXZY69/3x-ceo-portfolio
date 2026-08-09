@@ -2,282 +2,176 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>3x_ceo — Roblox Developer</title>
-<meta name="description" content="3x_ceo — Roblox developer creating engaging games, systems and UI.">
+<meta name="description" content="3x_ceo — Roblox developer and game creator.">
 <style>
-:root{--bg:#071018;--panel:#0b1621;--panel2:#0e1c29;--line:#1d3548;--text:#edf7ff;--muted:#879bab;--orange:#3aa7ff;--orange2:#62c0ff}
+:root{
+  --bg:#070d13;--bg2:#0a121a;--line:#1b3040;--text:#eaf4fb;
+  --muted:#8298a8;--blue:#3ea9e8;--blue2:#79c9f5;--green:#49d6ae
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
-.wrap{width:min(1500px,96%);margin:auto}
-.nav{height:112px;border:1px solid #242526;border-radius:0 0 12px 12px;background:#08131d;display:grid;grid-template-columns:360px 1fr 150px;align-items:center;padding:0 32px;position:sticky;top:0;z-index:20}
-.brand{display:flex;align-items:center;gap:22px}
-.avatar{width:88px;height:88px;border:1px solid var(--orange);box-shadow:none;border-radius:10px;overflow:hidden;background:#1b1c1d;display:grid;place-items:center;font-weight:900;font-size:28px}
+.page{width:min(1180px,92%);margin:auto}
+
+/* NAV — deliberately light and narrow */
+header{height:74px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px}
+.avatar{width:44px;height:44px;border-radius:7px;overflow:hidden;background:#101c26;border:1px solid #2c6486}
 .avatar img{width:100%;height:100%;object-fit:cover}
-.brand h1{font-size:35px;line-height:1;margin:0 0 6px;letter-spacing:-1.5px}
-.brand p{margin:0;color:var(--orange);font-size:20px}
-.navlinks{display:flex;justify-content:center;gap:48px;font-weight:700;font-size:19px}
-.navlinks a{padding:35px 0 18px;color:#dcecf8;position:relative}
-.navlinks a.active,.navlinks a:hover{color:var(--orange)}
-.navlinks a.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--orange)}
-.hire{justify-self:end;background:var(--orange);border-radius:7px;padding:16px 30px;font-size:18px;font-weight:800}
-.hire:hover{background:var(--orange2)}
+.brand strong{font-size:17px;letter-spacing:-.5px}
+.brand small{display:block;color:#6daed3;font-size:10px;margin-top:2px}
+nav{display:flex;gap:27px;font-size:11px;font-weight:700;color:#8da3b2}
+nav a:hover,nav a.active{color:#eaf4fb}
+.navHire{font-size:11px;font-weight:800;background:#278ac6;padding:9px 15px;border-radius:4px}
 
-.hero{min-height:390px;border:1px solid #1d3548;border-top:0;border-radius:0 0 10px 10px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;background:radial-gradient(circle at 80% 40%,#163f5a22,transparent 38%),#08131d}
-.heroCopy{padding:58px 38px 52px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
-.hero h2{font-size:66px;line-height:.95;letter-spacing:-3px;max-width:720px;margin:0 0 24px;text-transform:uppercase}
-.hero h2 span{color:var(--orange)}
-.hero p{max-width:610px;color:#a9bac8;font-size:20px;line-height:1.45;margin:0}
-.actions{display:flex;gap:28px;align-items:center;margin-top:28px}
-.primary{border:1px solid var(--orange);padding:14px 24px;border-radius:6px;font-weight:800}
-.primary:hover{background:#3aa7ff18}
-.available{font-size:15px;color:#d7e8f4;display:flex;gap:10px;align-items:center}
-.dot{width:11px;height:11px;border-radius:50%;background:#42d6b2;display:inline-block}
-.heroVisual{position:relative;min-height:390px;background:linear-gradient(90deg,#08131df5 0%,#08131d55 30%,#08131d05 100%),url("murder-tower-escape.png") center/cover no-repeat;filter:saturate(.75) brightness(.48)}
-.heroVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#071018 100%)}
+/* HERO — no board, no giant card */
+.hero{position:relative;min-height:455px;display:flex;align-items:center;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-100px;top:35px;width:510px;height:510px;background:radial-gradient(circle,#17476635 0%,transparent 67%);pointer-events:none}
+.heroCopy{position:relative;z-index:2;max-width:690px;padding:68px 0}
+.eyebrow{display:flex;align-items:center;gap:9px;color:#6faed1;font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);display:block}
+h1{font-size:76px;line-height:.9;letter-spacing:-5px;margin:0 0 22px;text-transform:uppercase}
+h1 span{color:var(--blue)}
+.heroText{font-size:16px;line-height:1.55;color:#91a7b6;max-width:560px;margin:0}
+.heroActions{display:flex;align-items:center;gap:19px;margin-top:28px}
+.primary{background:var(--blue);padding:12px 18px;border-radius:4px;font-size:11px;font-weight:900}
+.primary:hover{background:#55b7ef}
+.secondary{font-size:11px;color:#8ca5b5;font-weight:700}
+.heroArt{position:absolute;right:-30px;bottom:0;width:470px;height:360px;background:url("murder-tower-escape.png") center/cover no-repeat;opacity:.32;filter:saturate(.55);mask-image:linear-gradient(90deg,transparent,#000 40%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,#000 100%)}
 
-.section{border:1px solid #1d3548;border-top:0;padding:28px 24px}
-.sectionHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.sectionHead h2{font-size:19px;margin:0;text-transform:uppercase;letter-spacing:.06em}
-.sectionHead h2:after{content:"";display:inline-block;width:80px;height:1px;background:var(--orange);vertical-align:middle;margin-left:20px}
-.viewAll{color:var(--orange);font-size:15px;font-weight:700}
-.games{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.game{background:#101112;border:1px solid #2a2b2c;border-radius:10px;overflow:hidden;transition:.18s}
-.game:hover{transform:translateY(-3px);border-color:#235d85}
-.thumb{height:240px;position:relative;background:#151617;overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.game:hover .thumb img{transform:scale(1.025)}
-.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,#00000088)}
-.thumb span{position:absolute;left:10px;top:10px;z-index:2;background:#08131ddd;border:1px solid #ffffff18;padding:5px 7px;border-radius:4px;font-size:8px;font-weight:900;letter-spacing:.1em}
-.thumb b{position:absolute;right:10px;bottom:10px;z-index:2;color:var(--orange);font-size:24px}
-.gameInfo{padding:13px 13px 14px}
-.gameInfo h3{font-size:17px;line-height:1.3;margin:0 0 10px;min-height:44px}
-.gameMeta{font-size:9px;color:#8095a7;letter-spacing:.08em;display:flex;justify-content:space-between}
-.gameMeta strong{color:var(--orange);font-size:15px}
+/* PROJECTS — only actual game thumbnails get cards */
+.sectionTop{display:flex;align-items:end;justify-content:space-between;margin:10px 0 17px}
+.sectionTop h2{font-size:13px;text-transform:uppercase;letter-spacing:.13em;margin:0}
+.sectionTop p{margin:0;color:#637c8e;font-size:10px}
+.projects{border-top:1px solid var(--line);padding:28px 0 50px}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.game{display:block;background:#0b141d;border:1px solid #172b39;border-radius:6px;overflow:hidden;transition:.18s}
+.game:hover{border-color:#2d6f96;transform:translateY(-2px)}
+.thumb{height:190px;position:relative;background:#111c25;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#061018c9)}
+.tag{position:absolute;top:9px;left:9px;background:#071018e8;color:#a9d9f5;padding:4px 6px;border-radius:3px;font-size:7px;font-weight:900;letter-spacing:.1em}
+.arrow{position:absolute;right:10px;bottom:7px;font-size:19px;color:#65bdf0}
+.gameInfo{padding:11px 12px 12px}
+.gameInfo h3{font-size:14px;line-height:1.25;margin:0 0 9px}
+.gameMeta{display:flex;justify-content:space-between;color:#62798a;font-size:8px;letter-spacing:.08em}
+.gameMeta b{color:#5fb8e9}
 
-.stats{margin:0 24px 28px;border:1px solid #1d3548;border-radius:10px;background:#0b1722;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:24px 30px;display:flex;gap:16px;align-items:center;justify-content:center;border-right:1px solid #1d3548}
-.stat:last-child{border-right:0}
-.statIcon{font-size:25px;color:var(--orange);width:35px;text-align:center}
-.stat b{display:block;font-size:20px}
-.stat small{color:#8499aa;font-size:13px}
+/* SMALL STATS — one clean row */
+.stats{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
+.stat{display:flex;align-items:center;gap:10px;padding:0 24px;border-right:1px solid var(--line);flex:1}
+.stat:first-child{padding-left:0}.stat:last-child{border:0}
+.statIcon{color:var(--blue);font-size:17px}
+.stat b{display:block;font-size:14px}.stat small{display:block;color:#6f8797;font-size:9px;margin-top:3px}
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:70px 24px}
-.about h2{font-size:44px;margin:0 0 15px}
-.about p{color:#9eb0bf;font-size:17px;line-height:1.6;max-width:650px}
-.contact{padding:80px 24px;text-align:center;border-top:1px solid #1d3548}
-.contact h2{font-size:48px;margin:0 0 12px}
-.contact p{color:#8499aa}
-footer{padding:25px 24px;border-top:1px solid #1d3548;color:#718596;font-size:12px;display:flex;justify-content:space-between}
+/* BOTTOM — clean editorial columns, no stacked boxes */
+.bottom{display:grid;grid-template-columns:1.15fr .85fr;gap:90px;padding:58px 0 55px;border-bottom:1px solid var(--line)}
+.kicker{font-size:9px;color:#5aa9d6;letter-spacing:.17em;font-weight:900;margin-bottom:13px}
+.bottom h2{font-size:35px;line-height:1.02;letter-spacing:-2px;margin:0 0 13px}
+.bottom p{font-size:13px;line-height:1.7;color:#8298a8;max-width:600px;margin:0}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;margin-top:3px}
+.service{padding:13px 0;border-top:1px solid #182b38}
+.service:last-child{border-bottom:1px solid #182b38}
+.service strong{font-size:12px}.service span{display:block;color:#718898;font-size:10px;line-height:1.5;margin-top:5px}
 
-@media(max-width:1100px){
-.nav{grid-template-columns:1fr auto;height:auto;padding:15px 20px;gap:15px}
-.navlinks{grid-column:1/-1;grid-row:2;gap:25px;font-size:15px;justify-content:flex-start;overflow:auto}
-.navlinks a{padding:10px 0 13px}
-.games{grid-template-columns:repeat(3,1fr)}
-.thumb{height:220px}
+/* CONTACT — simple, not a giant panel */
+.contact{display:flex;align-items:center;justify-content:space-between;padding:48px 0}
+.contact h2{font-size:32px;letter-spacing:-1.5px;margin:0 0 7px}
+.contact p{margin:0;color:#718797;font-size:12px}
+.contact a{background:#278ac6;border-radius:4px;padding:12px 18px;font-size:11px;font-weight:900}
+footer{border-top:1px solid var(--line);padding:17px 0 25px;color:#536c7d;font-size:9px;display:flex;justify-content:space-between}
+
+@media(max-width:900px){
+ .page{width:92%}.heroArt{right:-160px;opacity:.2}.games{grid-template-columns:repeat(2,1fr)}
+ nav{gap:15px}
 }
-@media(max-width:700px){
-.wrap{width:100%}
-.nav{border-radius:0}
-.brand{gap:12px}.avatar{width:62px;height:62px}.brand h1{font-size:25px}.brand p{font-size:14px}
-.hire{padding:11px 15px;font-size:13px}
-.hero{grid-template-columns:1fr;min-height:520px}
-.heroCopy{padding:45px 22px}
-.hero h2{font-size:48px;letter-spacing:-2px}
-.hero p{font-size:16px}
-.heroVisual{position:absolute;inset:35% 0 0;opacity:.55}
-.games{grid-template-columns:repeat(2,1fr);gap:10px}
-.thumb{height:190px}
-.stats{grid-template-columns:1fr 1fr;margin:0 10px 15px}
-.stat{padding:18px 10px;border-bottom:1px solid #1d3548}
-.about{grid-template-columns:1fr;padding:50px 20px}
-.contact h2{font-size:36px}
-footer{display:block}
-}
-
-/* SHARP PASS */
-body{background:#070d14}
-.wrap{width:min(1440px,94%);margin:auto}
-.nav{height:86px;border:0;border-bottom:1px solid #183247;border-radius:0;background:#080f17;padding:0 18px;grid-template-columns:320px 1fr 130px}
-.brand{gap:14px}
-.avatar{width:58px;height:58px;border:1px solid #347eb0;border-radius:8px;box-shadow:none}
-.brand h1{font-size:24px;letter-spacing:-1px}
-.brand p{font-size:12px;color:#6bb8ea}
-.navlinks{gap:34px;font-size:13px}
-.navlinks a{padding:28px 0 15px;color:#9eb1bf}
-.navlinks a.active{color:#dff3ff}
-.navlinks a.active:after{height:2px}
-.hire{background:#2589c9;border-radius:4px;padding:11px 19px;font-size:12px}
-.hire:hover{background:#2f9ddd}
-
-.hero{min-height:420px;border:0;border-bottom:1px solid #183247;border-radius:0;grid-template-columns:1.1fr .9fr;background:#080f17}
-.heroCopy{padding:64px 38px}
-.hero h2{font-size:70px;line-height:.88;letter-spacing:-4px;margin-bottom:22px}
-.hero h2 span{color:#43a9e8}
-.hero p{font-size:17px;line-height:1.5;color:#8fa5b5;max-width:570px}
-.actions{gap:20px;margin-top:25px}
-.primary{border:0;background:#2589c9;padding:12px 18px;border-radius:4px;font-size:12px}
-.primary:hover{background:#2f9ddd}
-.available{font-size:12px;color:#8298a8}
-.dot{width:7px;height:7px}
-.heroVisual{min-height:420px;filter:saturate(.7) brightness(.38);background-position:center}
-.heroVisual:after{background:linear-gradient(90deg,#080f17 0%,transparent 45%,#080f17 100%)}
-
-.section{border:0;border-bottom:1px solid #183247;padding:38px 0}
-.sectionHead{margin:0 0 18px}
-.sectionHead h2{font-size:14px;letter-spacing:.12em}
-.sectionHead h2:after{width:45px;margin-left:13px;background:#2589c9}
-.viewAll{font-size:11px;color:#4ca9df}
-.games{grid-template-columns:repeat(6,1fr);gap:10px}
-.game{background:#0b141d;border:1px solid #182d3c;border-radius:5px}
-.game:hover{transform:translateY(-2px);border-color:#2c79a7}
-.thumb{height:190px}
-.thumb span{top:8px;left:8px;background:#071018e8;border:0;padding:4px 6px;font-size:7px}
-.thumb b{right:8px;bottom:7px;font-size:18px}
-.gameInfo{padding:10px 11px 11px}
-.gameInfo h3{font-size:14px;line-height:1.25;margin:0 0 9px;min-height:35px}
-.gameMeta{font-size:7px;color:#667c8d}
-.gameMeta strong{font-size:12px;color:#43a9e8}
-
-.stats{margin:0;border:0;border-bottom:1px solid #183247;border-radius:0;background:#09131c;grid-template-columns:repeat(4,1fr)}
-.stat{padding:18px 20px;justify-content:flex-start;border-right:1px solid #183247}
-.statIcon{font-size:18px;color:#43a9e8;width:25px}
-.stat b{font-size:15px}
-.stat small{font-size:10px;color:#718797}
-
-.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;padding:60px 0;border-bottom:1px solid #183247}
-.about h2{font-size:38px;letter-spacing:-2px}
-.about p{font-size:15px;line-height:1.7;color:#8ea2b1}
-
-#services .about{border:0;padding:25px 0}
-#services .about h2{font-size:23px;margin-bottom:6px}
-#services .about p{font-size:13px;margin:0;max-width:470px}
-
-.contact{padding:72px 0;border:0;text-align:left}
-.contact h2{font-size:44px;letter-spacing:-2px}
-.contact p{font-size:14px}
-.contact .hire{display:inline-block}
-
-footer{padding:20px 0;border-top:1px solid #183247;border-bottom:0;color:#63798a;font-size:10px}
-
-@media(max-width:1100px){
- .games{grid-template-columns:repeat(3,1fr)}
- .thumb{height:220px}
- .nav{grid-template-columns:1fr auto}
- .navlinks{grid-column:1/-1;grid-row:2}
-}
-@media(max-width:700px){
- .wrap{width:100%}
- .nav{padding:0 14px;height:72px}
- .avatar{width:45px;height:45px}
- .brand h1{font-size:19px}
- .brand p{font-size:10px}
- .navlinks{gap:20px;font-size:11px;overflow:auto}
- .navlinks a{padding:10px 0 12px}
- .hero{min-height:530px;display:block}
- .heroCopy{padding:45px 18px}
- .hero h2{font-size:52px}
- .heroVisual{position:absolute;inset:35% 0 0;min-height:0;opacity:.5}
- .section{padding:28px 14px}
- .games{grid-template-columns:repeat(2,1fr);gap:8px}
- .thumb{height:185px}
- .stats{grid-template-columns:1fr 1fr}
- .stat{padding:15px 12px}
- .about{grid-template-columns:1fr;gap:12px;padding:45px 14px}
- .contact{padding:55px 14px}
- footer{padding:18px 14px}
+@media(max-width:650px){
+ header{height:65px}.avatar{width:38px;height:38px}.brand strong{font-size:15px}
+ nav{display:none}.navHire{padding:8px 12px}
+ .hero{min-height:480px}.heroCopy{padding:60px 0}
+ h1{font-size:51px;letter-spacing:-3px}
+ .heroText{font-size:14px}.heroArt{right:-190px;width:430px;height:330px}
+ .games{grid-template-columns:1fr}.thumb{height:205px}
+ .stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+ .stat{border:0;padding:0}.stat:first-child{padding-left:0}
+ .bottom{grid-template-columns:1fr;gap:42px;padding:45px 0}
+ .services{grid-template-columns:1fr}
+ .contact{display:block}.contact a{display:inline-block;margin-top:20px}
+ footer{display:block}.footerRight{margin-top:6px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="nav">
+<div class="page">
+<header>
   <a class="brand" href="#">
     <div class="avatar"><img src="roblox-avatar.webp" alt="3x_ceo Roblox avatar"></div>
-    <div><h1>3x_ceo</h1><p>Roblox Developer</p></div>
+    <div><strong>3x_ceo</strong><small>Roblox Developer</small></div>
   </a>
-  <nav class="navlinks">
-    <a class="active" href="#">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+  <nav>
+    <a class="active" href="#">Home</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#about">About</a>
   </nav>
-  <a class="hire" href="#contact">Hire Me</a>
+  <a class="navHire" href="#contact">Hire Me</a>
 </header>
 
-<main>
 <section class="hero">
   <div class="heroCopy">
-    <h2>I BUILD <span>FUN.<br>PLAYERS STAY.</span></h2>
-    <p>Roblox developer creating engaging tower games with smart mechanics and smooth gameplay.</p>
-    <div class="actions">
-      <a class="primary" href="#projects">VIEW MY PROJECTS&nbsp; →</a>
-      <span class="available"><i class="dot"></i> Available for work</span>
+    <div class="eyebrow"><i></i> Available for Roblox development</div>
+    <h1>I BUILD <span>GAMES<br>PEOPLE PLAY.</span></h1>
+    <p class="heroText">Roblox developer focused on game systems, progression, UI and tower experiences built to feel fast, clean and fun.</p>
+    <div class="heroActions">
+      <a class="primary" href="#projects">VIEW PROJECTS →</a>
+      <a class="secondary" href="#contact">Let's work together</a>
     </div>
   </div>
-  <div class="heroVisual" aria-hidden="true"></div>
+  <div class="heroArt"></div>
 </section>
 
-<section class="section" id="projects">
-  <div class="sectionHead"><h2>My Projects</h2><a class="viewAll" href="#projects">View all projects&nbsp; →</a></div>
+<section class="projects" id="projects">
+  <div class="sectionTop"><h2>Selected Projects</h2><p>6 Roblox experiences</p></div>
   <div class="games">
-<a class="game" href="https://www.roblox.com/games/100984268554701/Murder-Tower-Escape" target="_blank" rel="noopener">
-  <div class="thumb"><img src="murder-tower-escape.png" alt="Murder Tower Escape"><span>MURDER MYSTERY</span><b>↗</b></div>
-  <div class="gameInfo"><h3>Murder Tower Escape</h3><div class="gameMeta">ROBLOX EXPERIENCE <strong>↗</strong></div></div>
-</a>
-<a class="game" href="https://www.roblox.com/games/110167173912033/1-Speed-Verity-escape" target="_blank" rel="noopener">
-  <div class="thumb"><img src="one-speed-verity.png" alt="[W3] +1 Speed Verity escape!"><span>+1 SPEED</span><b>↗</b></div>
-  <div class="gameInfo"><h3>[W3] +1 Speed Verity escape!</h3><div class="gameMeta">ROBLOX EXPERIENCE <strong>↗</strong></div></div>
-</a>
-<a class="game" href="https://www.roblox.com/games/117399074623880/1-Youtuber-Escape" target="_blank" rel="noopener">
-  <div class="thumb"><img src="one-youtuber-escape.png" alt="[UPD] +1 Youtuber Escape"><span>ESCAPE</span><b>↗</b></div>
-  <div class="gameInfo"><h3>[UPD] +1 Youtuber Escape</h3><div class="gameMeta">ROBLOX EXPERIENCE <strong>↗</strong></div></div>
-</a>
-<a class="game" href="https://www.roblox.com/games/108131039468093/Sammy-Vs-Jandel-Tower" target="_blank" rel="noopener">
-  <div class="thumb"><img src="sammy-vs-jandel.png" alt="[X] Sammy Vs Jandel Tower!"><span>TOWER</span><b>↗</b></div>
-  <div class="gameInfo"><h3>[X] Sammy Vs Jandel Tower!</h3><div class="gameMeta">ROBLOX EXPERIENCE <strong>↗</strong></div></div>
-</a>
-<a class="game" href="https://www.roblox.com/games/122866667473536/Escape-LAVA-Tower" target="_blank" rel="noopener">
-  <div class="thumb"><img src="escape-lava-tower.png" alt="Escape LAVA Tower"><span>OBBY / SURVIVAL</span><b>↗</b></div>
-  <div class="gameInfo"><h3>Escape LAVA Tower</h3><div class="gameMeta">ROBLOX EXPERIENCE <strong>↗</strong></div></div>
-</a>
-<a class="game" href="https://www.roblox.com/games/115130999994643/MEET-HELLOKITTY-TOWER" target="_blank" rel="noopener">
-  <div class="thumb"><img src="hello-kitty-tower.png" alt="MEET HELLOKITTY TOWER!"><span>TOWER</span><b>↗</b></div>
-  <div class="gameInfo"><h3>MEET HELLOKITTY TOWER!</h3><div class="gameMeta">ROBLOX EXPERIENCE <strong>↗</strong></div></div>
-</a></div>
+    <a class="game" href="https://www.roblox.com/games/100984268554701/Murder-Tower-Escape" target="_blank"><div class="thumb"><img src="murder-tower-escape.png"><span class="tag">MURDER MYSTERY</span><b class="arrow">↗</b></div><div class="gameInfo"><h3>Murder Tower Escape</h3><div class="gameMeta"><span>ROBLOX EXPERIENCE</span><b>OPEN</b></div></div></a>
+    <a class="game" href="https://www.roblox.com/games/110167173912033/1-Speed-Verity-escape" target="_blank"><div class="thumb"><img src="one-speed-verity.png"><span class="tag">+1 SPEED</span><b class="arrow">↗</b></div><div class="gameInfo"><h3>[W3] +1 Speed Verity escape!</h3><div class="gameMeta"><span>ROBLOX EXPERIENCE</span><b>OPEN</b></div></div></a>
+    <a class="game" href="https://www.roblox.com/games/117399074623880/1-Youtuber-Escape" target="_blank"><div class="thumb"><img src="one-youtuber-escape.png"><span class="tag">ESCAPE</span><b class="arrow">↗</b></div><div class="gameInfo"><h3>[UPD] +1 Youtuber Escape</h3><div class="gameMeta"><span>ROBLOX EXPERIENCE</span><b>OPEN</b></div></div></a>
+    <a class="game" href="https://www.roblox.com/games/108131039468093/Sammy-Vs-Jandel-Tower" target="_blank"><div class="thumb"><img src="sammy-vs-jandel.png"><span class="tag">TOWER</span><b class="arrow">↗</b></div><div class="gameInfo"><h3>[X] Sammy Vs Jandel Tower!</h3><div class="gameMeta"><span>ROBLOX EXPERIENCE</span><b>OPEN</b></div></div></a>
+    <a class="game" href="https://www.roblox.com/games/122866667473536/Escape-LAVA-Tower" target="_blank"><div class="thumb"><img src="escape-lava-tower.png"><span class="tag">SURVIVAL</span><b class="arrow">↗</b></div><div class="gameInfo"><h3>Escape LAVA Tower</h3><div class="gameMeta"><span>ROBLOX EXPERIENCE</span><b>OPEN</b></div></div></a>
+    <a class="game" href="https://www.roblox.com/games/115130999994643/MEET-HELLOKITTY-TOWER" target="_blank"><div class="thumb"><img src="hello-kitty-tower.png"><span class="tag">TOWER</span><b class="arrow">↗</b></div><div class="gameInfo"><h3>MEET HELLOKITTY TOWER!</h3><div class="gameMeta"><span>ROBLOX EXPERIENCE</span><b>OPEN</b></div></div></a>
+  </div>
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="statIcon">⌁</div><div><b>6+</b><small>Games Published</small></div></div>
-  <div class="stat"><div class="statIcon">◉</div><div><b>300</b><small>Peak CCU</small></div></div>
-  <div class="stat"><div class="statIcon">&lt;/&gt;</div><div><b>Custom Systems</b><small>Clean &amp; Optimized</small></div></div>
-  <div class="stat"><div class="statIcon">◷</div><div><b>Active</b><small>Developer</small></div></div>
+  <div class="stat"><span class="statIcon">⌁</span><div><b>6+</b><small>Games Published</small></div></div>
+  <div class="stat"><span class="statIcon">◉</span><div><b>300</b><small>Peak CCU</small></div></div>
+  <div class="stat"><span class="statIcon">&lt;/&gt;</span><div><b>Custom</b><small>Game Systems</small></div></div>
+  <div class="stat"><span class="statIcon">◷</span><div><b>Active</b><small>Developer</small></div></div>
 </div>
 
-<section class="about" id="about">
-  <div><div style="color:var(--orange);font-size:11px;font-weight:900;letter-spacing:.15em">ABOUT</div><h2>Built around the player.</h2></div>
-  <div><p>I’m 3x_ceo, a Roblox developer focused on building game systems, progression, UI and experiences that keep players moving. I care about clean implementation, readable interfaces and games that are actually fun to play.</p></div>
-</section>
-
-<section class="section" id="services">
-  <div class="sectionHead"><h2>Services</h2></div>
-  <div class="about" style="padding:20px 0">
-    <div><h2 style="font-size:30px">Scripting</h2><p>Custom mechanics, round systems, progression, DataStores, networking and optimization.</p></div>
-    <div><h2 style="font-size:30px">UI / UX</h2><p>Clean Roblox interfaces, responsive layouts, menus, shops, HUDs and polished interactions.</p></div>
+<section class="bottom" id="about">
+  <div>
+    <div class="kicker">ABOUT 3X_CEO</div>
+    <h2>Built around<br>the player.</h2>
+    <p>I'm a Roblox developer focused on making experiences that are easy to understand, satisfying to play and built with solid systems underneath. From tower games to progression and UI, I build around the player first.</p>
+  </div>
+  <div id="services">
+    <div class="kicker">WHAT I DO</div>
+    <div class="services">
+      <div class="service"><strong>Game Scripting</strong><span>Round systems, mechanics, progression, DataStores and optimization.</span></div>
+      <div class="service"><strong>UI / UX</strong><span>Clean HUDs, menus, shops and responsive Roblox interfaces.</span></div>
+      <div class="service"><strong>Game Systems</strong><span>Leaderboards, rewards, currencies and replayable loops.</span></div>
+      <div class="service"><strong>Polish</strong><span>Performance fixes, gameplay improvements and final touches.</span></div>
+    </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
-  <div style="color:var(--orange);font-size:11px;font-weight:900;letter-spacing:.15em">CONTACT</div>
-  <h2>Have a game idea?</h2>
-  <p>Let’s turn it into something players actually want to play.</p>
-  <a class="hire" style="display:inline-block;margin-top:18px" href="https://www.roblox.com/users/profile?username=3x_ceo" target="_blank">Hire Me on Roblox →</a>
+  <div><div class="kicker">CONTACT</div><h2>Have a game idea?</h2><p>Let's turn it into something players want to play.</p></div>
+  <a href="https://www.roblox.com/users/profile?username=3x_ceo" target="_blank">CONTACT ME →</a>
 </section>
-</main>
-<footer><span>© 2026 3x_ceo · Roblox Developer</span><span>Available for development work</span></footer>
+
+<footer><span>© 2026 3x_ceo · Roblox Developer</span><span class="footerRight">Peak CCU 300 · Available for work</span></footer>
 </div>
 </body>
 </html>

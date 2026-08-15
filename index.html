@@ -35,6 +35,15 @@ nav a:hover,nav a.active{color:#eaf4fb}
 .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);display:block}
 h1{font-size:76px;line-height:.9;letter-spacing:-5px;margin:0 0 22px;text-transform:uppercase}
 h1 span{color:var(--blue)}
+h1 span.gradientText{
+  background-image:linear-gradient(90deg,#3ea9e8,#79c9f5,#49d6ae,#79c9f5,#3ea9e8);
+  background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:gradientMove 6s ease-in-out infinite alternate;
+}
+@keyframes gradientMove{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){h1 span.gradientText{animation:none}}
 .heroText{font-size:16px;line-height:1.55;color:#91a7b6;max-width:560px;margin:0}
 .heroActions{display:flex;align-items:center;gap:19px;margin-top:28px}
 .primary{background:var(--blue);padding:12px 18px;border-radius:4px;font-size:11px;font-weight:900}
@@ -48,8 +57,16 @@ h1 span{color:var(--blue)}
 .sectionTop p{margin:0;color:#637c8e;font-size:10px}
 .projects{border-top:1px solid var(--line);padding:28px 0 50px}
 .games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.game{display:block;background:#0b141d;border:1px solid #172b39;border-radius:6px;overflow:hidden;transition:.18s}
+.game{display:block;position:relative;background:#0b141d;border:1px solid #172b39;border-radius:6px;overflow:hidden;transition:.18s}
 .game:hover{border-color:#2d6f96;transform:translateY(-2px)}
+.game::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(-45deg,hsla(0,0%,100%,0) 60%,rgba(255,255,255,.32) 70%,hsla(0,0%,100%,0),hsla(0,0%,100%,0) 100%);
+  background-size:250% 250%;background-repeat:no-repeat;background-position:-120% -120%;
+  transition:background-position .65s ease;
+}
+.game:hover::after{background-position:120% 120%}
+@media(prefers-reduced-motion:reduce){.game::after{transition:none}}
 .thumb{height:190px;position:relative;background:#111c25;overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#061018c9)}
@@ -180,7 +197,7 @@ footer{border-top-color:#1b3040;color:#536c7d}
 <section class="hero">
   <div class="heroCopy">
     <div class="eyebrow"><i></i> Available for Roblox development</div>
-    <h1>I BUILD <span>GAMES<br>PEOPLE PLAY.</span></h1>
+    <h1>I BUILD <span class="gradientText">GAMES<br>PEOPLE PLAY.</span></h1>
     <p class="heroText">Roblox developer focused on game systems, progression, UI and tower experiences built to feel fast, clean and fun.</p>
     <div class="heroActions">
       <a class="primary" href="#projects">VIEW PROJECTS →</a>
@@ -241,5 +258,112 @@ footer{border-top-color:#1b3040;color:#536c7d}
 
 <footer><span>© 2026 3x_ceo · Roblox Developer</span><span class="footerRight">Peak CCU 300 · Available for work</span></footer>
 </div>
+
+<script>
+/* ---- Animated background waves (behind everything, subtle) ---- */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'waveCanvas';
+  canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;opacity:.4;';
+  document.body.insertBefore(canvas, document.body.firstChild);
+  const ctx = canvas.getContext('2d');
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const waves = [
+    { amp: 26, wavelength: 340, speed: 0.010, phase: 0,   color: 'rgba(62,169,232,0.30)',  yOffset: .60 },
+    { amp: 18, wavelength: 260, speed: 0.016, phase: 2.1, color: 'rgba(121,201,245,0.22)', yOffset: .72 },
+    { amp: 13, wavelength: 200, speed: 0.022, phase: 4.4, color: 'rgba(73,214,174,0.16)',  yOffset: .84 }
+  ];
+
+  let t = 0;
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    waves.forEach(w => {
+      const baseY = canvas.height * w.yOffset;
+      ctx.beginPath();
+      ctx.moveTo(0, baseY);
+      for (let x = 0; x <= canvas.width; x += 8) {
+        const y = baseY + Math.sin((x / w.wavelength) + t * w.speed + w.phase) * w.amp;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.closePath();
+      ctx.fillStyle = w.color;
+      ctx.fill();
+    });
+    t++;
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ---- Click spark effect (site-wide) ---- */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'clickSparkCanvas';
+  canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const sparkColor = '#79c9f5';
+  const sparkSize = 10;
+  const sparkRadius = 18;
+  const sparkCount = 8;
+  const duration = 450;
+  let sparks = [];
+
+  function easeOut(tt){ return tt * (2 - tt); }
+
+  function draw(ts){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sparks = sparks.filter(spark => {
+      const elapsed = ts - spark.start;
+      if (elapsed >= duration) return false;
+      const progress = elapsed / duration;
+      const eased = easeOut(progress);
+      const distance = eased * sparkRadius;
+      const lineLength = sparkSize * (1 - eased);
+      const x1 = spark.x + distance * Math.cos(spark.angle);
+      const y1 = spark.y + distance * Math.sin(spark.angle);
+      const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+      const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+      ctx.strokeStyle = sparkColor;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+      return true;
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  document.addEventListener('click', e => {
+    const now = performance.now();
+    for (let i = 0; i < sparkCount; i++) {
+      sparks.push({ x: e.clientX, y: e.clientY, angle: (2 * Math.PI * i) / sparkCount, start: now });
+    }
+  });
+})();
+</script>
 </body>
 </html>
